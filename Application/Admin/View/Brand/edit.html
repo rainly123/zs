@@ -1,0 +1,31 @@
+<extend name="Public/base" />
+<block name="body">
+    <div class="main-title cf">
+        <h2>{:isset($id)?'编辑':'新增'}行为</h2>
+    </div>
+    <!-- 表单 -->
+    <form id="form" action="{:U('save')}" method="post" class="form-horizontal">
+        <input type="hidden" name="HDaction" value="{$action}">
+        <input type="hidden" name="HDAttr_value" value="{$brand_type}">
+        <div class="form-item cf">
+            <label class="item-label">名称</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="name" value="{$brand.br_name}">
+            </div>
+        </div>
+        <div class="form-item">
+            <input type="hidden" name="id" value="{$brand.id}"/>
+            <button type="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        Think.setValue('type',{$type|default=1});
+        //导航高亮
+        highlight_subnav('{:U('Brand/index')}');
+    </script>
+</block>

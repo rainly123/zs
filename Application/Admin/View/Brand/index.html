@@ -1,0 +1,80 @@
+<extend name="Public/base" />
+
+<block name="body">
+    <!-- 标题栏 -->
+    <div class="main-title">
+        <h2>品牌管理</h2>
+    </div>
+    <div>
+        <a href="#" id="create" class="btn">快速创建</a>
+        <div class="form-item">
+            <label class="item-label">品牌类型<span class="check-tips">（所属的品牌类型）</span></label>
+            <div class="controls">
+
+            </div>
+        </div>
+    </div>
+    <div class="cf">
+        <select name="pid" id="brandtype">
+            <volist name="brand_type_list" id="brand">
+                <option value="{$brand.attr_value}">{$brand.attr_name}</option>
+            </volist>
+        </select>
+    </div>
+    <!-- 数据列表 -->
+    <div class="data-table table-striped">
+        <table>
+            <thead>
+            <tr>
+                <th>名称</th>
+                <th>排序</th>
+                <th>创建时间</th>
+                <th>最后更新时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <notempty name="brand_list">
+                <volist name="brand_list" id="vo">
+                    <tr>
+                        <td>{$vo.br_name}</td>
+                        <td>{$vo.br_list}</td>
+                        <td>{$vo.create_time}</td>
+                        <td>{$vo.update_time}</td>
+                        <td>
+                            <a href="{:U('Brand/edit?id='.$vo[id])}">编辑</a>
+                            <a href="{:U('Brand/remove?id='.$vo[id])}" class="confirm ajax-get">删除</a></td>
+                        </tr>
+                </volist>
+                <else/>
+                <td colspan="6" class="text-center"> aOh! 暂时还没有内容! </td>
+            </notempty>
+            </tbody>
+        </table>
+    </div>
+    <!-- 分页 -->
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+   <script type="text/javascript">
+       $("#brandtype").attr('value','{$brandvalue}');
+       $("#brandtype").change(function(){
+           var value=$(this).val();
+           var url='{:U()}';
+           url=url.substring(0,url.length-5);
+           url=  url+"/value/"+value+".html";
+           location.href=url;
+       })
+       $("#create").click(function () {
+           var value = $("#brandtype").val();
+           var url="{:U('Brand/create')}";
+           url=url.substring(0,url.length-5);
+           url=  url+"/value/"+value+".html";
+           location.href=url;
+           return false;
+       })
+   </script>
+</block>
