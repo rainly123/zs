@@ -1,0 +1,127 @@
+<extend name="Base/common"/>
+<block name="header">
+    <link href="__CSS__/normal.css" rel="stylesheet" type="text/css">
+    <script src="__JS__/normal.js"></script>
+    <script type="text/javascript">
+        $(function () {
+           $("a[name='notice']").click(function () {
+               var val=$(this).attr('data');
+               var html='';
+               $.ajax({
+                   type:'post',
+                   url:"{:U('Normal/getNoticeAjax')}",
+                   data:{'val':val},
+                   dataType:'json',
+                   success: function (data) {
+                       if(data==null)
+                       {
+                       }
+                       else
+                       {
+                           html=data.sc_content
+                       }
+
+                       $(".fenlei_top").empty();
+                       $(".fenlei_top").append(html)
+//                         alert(data.sc_content);
+                   }
+               })
+               return false;
+           })
+
+        })
+        var myMenu;
+        window.onload = function() {
+            myMenu = new SDMenu("my_menu");
+            myMenu.init();
+        };
+    </script>
+</block>
+<block name="body">
+    <div class="main_content">
+        <div class="xu_zhi">
+            <h2>
+                <span>入住须知</span>
+                <a href="#floor2" class="gray_link">店铺类型介绍</a>
+                <a href="#floor3" class="gray_link">入驻所需材料</a>
+            </h2>
+            <div class="xuzhi_cont">
+                {$nomal_notice.notice_content}
+            </div>
+        </div>
+        <div class="shop_production">
+            <a name="floor2"></a>
+            <h2>
+                <span>店铺类型介绍</span>
+            </h2>
+            <div class="shop_type">
+                <div class="type_first" style="border-left:none;">
+                    <h3 class="shoptype_hd qj">旗舰店</h3>
+                    {$BrandQJ.notice_content}
+                </div>
+                <div class="type_first">
+                    <h3 class="shoptype_hd zm">专卖店</h3>
+                    {$BrandZM.notice_content}
+
+                </div>
+                <div class="type_first">
+                    <h3 class="shoptype_hd zy">专营店</h3>
+                    {$BrandZY.notice_content}
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="cai_liao">
+            <a name="floor3"></a>
+            <h2>
+                <i>入驻所需材料</i>
+            </h2>
+            <div class="cailiao_cont">
+                <div class="dian_pu">
+                    <div id="my_menu" class="sdmenu">
+                        <volist name="science" id="science_list">
+                            <volist name="science_list" id="vo">
+                                <div>
+                                    <if condition="$vo.attr_pid eq 0">
+                                        <span>{$vo.attr_name}</span>
+                                        <else/>
+                                        <a name="notice" href="#" data="{$vo.attr_value}">{$vo.attr_name}</a>
+                                        <!--<a href="#">专营店</a>-->
+                                    </if>
+                                </div>
+                            </volist>
+                        </volist>
+
+                    </div>
+                </div>
+                <div class="dianpu_catant">
+                    <div class="fenlei_top">
+                        {$charge_notice.sc_content}
+                        <!--<h3>旗舰店店铺资质</h3>-->
+                        <!--<ol class="shop_fenlei">-->
+                            <!--<li>企业营业执照副本复印件（根据2014年10月1日生效的《企业经营异常名录管理暂行办法》，需确保未在企业经营异常名录中且所售商品属于经营范围内）</li>-->
+                            <!--<li>企业税务登记证复印件（国税、地税均可）</li>-->
+                            <!--<li>组织机构代码证复印件</li>-->
+                            <!--<li>银行开户许可证复印件</li>-->
+                            <!--<li>法定代表人身份证正反面复印件</li>-->
+                            <!--<li>店铺负责人身份证正反面复印件</li>-->
+                            <!--<li>由国家商标总局颁发的商标注册证或商标注册申请受理通知书复印件（若办理过变更、转让、续展，请一并提供商标总局颁发的变更、转让、续展证明或受理通知书）</li>-->
+                            <!--<li>商家向支付宝公司出具的授权书</li>-->
+                        <!--</ol>-->
+                        <!--<ul style="padding-bottom:10px;">-->
+                            <!--<li>* 若由权利人授权开设旗舰店，需提供独占授权书（如果商标权人为自然人，则需同时提供其亲笔签名的身份证复印件）。</li>-->
+                            <!--<li>若商标权人为境内企业或个人，请下载中文版独占授权书。若商标权人为境外企业或个人，可选择下载中文版或英文版独占授权书。（如果商标权人为境内自然人，则需同时提供其亲笔签名的身份证复印件。如果商标权人为境外自然人，则需同时提供其亲笔签名的护照复印件）。</li>-->
+                            <!--<li>* 若经营出售多个自有品牌的旗舰店，需提供品牌属于同一实际控制人的证明材料，此类店铺主动招商。</li>-->
+                            <!--<li>* 若申请卖场型旗舰店，需提供服务类商标注册证或商标注册申请受理通知书，此类店铺主动招商。</li>-->
+                        <!--</ul>-->
+                        <!--<p><b>行业资质要求：请根据您经营的商品查看下方左侧对应类目下所需的行业资质要求</b></p>-->
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</block>
+
+
+

@@ -60,7 +60,7 @@
 
 <block name="script">
    <script type="text/javascript">
-       $("#brandtype").attr('value','{$brandvalue}');
+       $("#brandtype").val('{$brandvalue}');
        $("#brandtype").change(function(){
            var value=$(this).val();
            var url='{:U()}';
@@ -76,5 +76,6 @@
            location.href=url;
            return false;
        })
+
    </script>
 </block>

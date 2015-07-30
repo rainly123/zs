@@ -10,6 +10,10 @@ use Think\Model;
  */
 class BrandModel extends Model
 {
+    protected $_validate = array(
+        array('br_name','require','br_name必须填写'), //默认情况下用正则进行验证
+    );
+
     /**
      * 通过品牌类型查询品牌信息
      */

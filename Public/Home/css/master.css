@@ -21,9 +21,8 @@ ul{
 body{
 	color:#545454;
     background:#ffffff;
-	font:12px/1.5 tahoma,arial,"\5b8b\4f53";
-	/*font-family:"微软雅黑","microsoft yahei","宋体",Arial,tahoma,Simsun;*/
-/*	font-size:14px;*/
+	font-family:"微软雅黑","microsoft yahei","宋体",Arial,tahoma,Simsun;
+	font-size:12px;
 	font-style:normal;}
 #top{
 	background:#f2f2f2;
@@ -173,6 +172,7 @@ body{
 	color:#000;
 	zoom:1;
 	font-size:14px;
+	font-weight:400;
 	text-align:center;
 	vertical-align:central;
 	margin:0 8px;

@@ -47,11 +47,25 @@ use Admin\Model\BrandModel;
           $this->display();
       }
 
+     /**
+      * 删除
+      */
       public function remove()
       {
+          $id=I('get.id');
+          $brand=M('Brand');
+          $data=array('id'=>$id,'marks'=>1);
+          $result=$brand->save($data);
+          if($result>0)
+          {
+              $this->success('删除成功');
+          }
 
       }
 
+     /**
+      * 编辑和创建
+      */
       public function create()
       {
           $type=I('get.value');
@@ -64,8 +78,7 @@ use Admin\Model\BrandModel;
      {
          $id=I('post.id');
          $action=I('post.HDaction');
-//         $this->error($action);
-         $brand=M('Brand');
+         $brand=D('Brand');
          if($action=='edit')
          {
             $data['br_name']=I('post.name');
@@ -73,20 +86,29 @@ use Admin\Model\BrandModel;
             $result=$brand->where('id='.$id.'')->save($data);
             if($result>0)
             {
-                $this->success('更新成功',Cookie('__forward__'));
+                $this->success('更新成功',U('Brand/index'));
             }
          }
          elseif($action=='create')
          {
-             $data['br_name']=I('post.name');
+             $data['br_name']= I('post.name');
+             $data['attr_value']=I('post.HDAttr_value');
              $data['create_time']=$this->getCurrentTime();
-             $data['attr_value']=$this->I('post.HDAttr_value');
              $data['update_time']=$this->getCurrentTime();
-             $result=$brand->create($data);
-             if($result>0)
+             $vial=$brand->create($data);
+             if($vial)
              {
-                 $this->success('数据写入成功', Cookie('__forward__'));
+                 $id = $brand->add();
+                 if($id>0)
+                 {
+                     $this->success('数据写入成功',U('Brand/index'));
+                 }
              }
+             else
+             {
+                 $this->error($brand->getError());
+             }
+
          }
 
      }

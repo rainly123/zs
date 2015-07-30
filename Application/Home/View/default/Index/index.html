@@ -1,6 +1,9 @@
 <extend name="Base/common"/>
-
-
+<block name="header">
+    <link href="__CSS__/master.css" rel="stylesheet" type="text/css">
+    <script src="__JS__/superslide.2.1.js"></script>
+    <script src="__JS__/index.js"></script>
+</block>
 <block name="body">
     <div class="banner">
         <div class="bannercont">
@@ -179,7 +182,7 @@
         </div>
     </div>
 
-    <div class="dialog_box box_overlay" style="width:1190px; z-index:9999999; left:365px; top:240px; display:none" id="close">
+    <div class="dialog_box box_overlay" style="width:1190px; z-index:9999999; left:20%; top:20%; display:none" id="close">
         <a href="#" class="dialog_close">
             <span class="dialog_span"></span>
         </a>
@@ -192,7 +195,7 @@
                     <p>亲，根据2015第e商城整体服务升级计划，即日起正式执行新进驻商家招商标准。以下是各行业今年意愿招商的品牌方向，请务必仔细查阅您申请入驻的品牌是否在以下范围。</p>
                 </div>
             </div>
-            <iframe src="brand1.html" frameborder="no" border="0" marginwidth="0" marginheight="0" width="1190" height="500">
+            <iframe src="{:U('Brand/banner1')}" frameborder="no" border="0" marginwidth="0" marginheight="0" width="1190" height="500">
             </iframe>
             <div class="dialog_btn">
                 <button class=" dialog_onlcik btn_bg btn_cont" style="border:none;">确定，继续入驻</button>
@@ -201,4 +204,6 @@
         </div>
     </div>
 </block>
+
+
 

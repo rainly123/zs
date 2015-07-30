@@ -3,14 +3,8 @@
 <head>
 	
 <meta charset="UTF-8">
-<link href="/Public/Home/css/master.css" rel="stylesheet" type="text/css">
 <script src="/Public/Home/js/jquery-1.10.2.min.js"></script>
-<script src="/Public/Home/js/superslide.2.1.js"></script>
-<script src="/Public/Home/js/index.js"></script>
-
-
-
-<!--<title><?php echo C('WEB_SITE_TITLE');?></title>-->
+<title><?php echo ($title); ?></title>
 <!--<link href="/Public/static/bootstrap/css/bootstrap.css" rel="stylesheet">-->
 <!--<link href="/Public/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">-->
 <!--<link href="/Public/static/bootstrap/css/docs.css" rel="stylesheet">-->
@@ -79,22 +73,22 @@
     <div class="nav">
         <ul class="nav_ul">
             <li>
-                <a href="index.html">招商首页</a>
+                <a href="<?php echo U('Index/index');?>">招商首页</a>
             </li>
             <li>
-                <a href="brand.html">招商品牌</a>
+                <a href="<?php echo U('Brand/index');?>">招商品牌</a>
             </li>
             <li>
-                <a href="normal.html">招商标准</a>
+                <a href="<?php echo U('Normal/index');?>">招商标准</a>
             </li>
             <li>
-                <a href="charges.html">资费标准</a>
+                <a href="<?php echo U('Charges/index');?>">资费标准</a>
             </li>
             <li>
-                <a href="feature.html">特色服务</a>
+                <a href="<?php echo U('Feature/index');?>">特色服务</a>
             </li>
             <li>
-                <a href="know.html">了解第e商城</a>
+                <a href="<?php echo U('About/index');?>">了解第e商城</a>
             </li>
         </ul>
     </div>
@@ -103,6 +97,10 @@
 	
 	<!-- 主体 -->
 	
+    <link href="/Public/Home/css/master.css" rel="stylesheet" type="text/css">
+    <script src="/Public/Home/js/superslide.2.1.js"></script>
+    <script src="/Public/Home/js/index.js"></script>
+
 <div id="main-container" class="container">
     <div class="row">
         
@@ -293,7 +291,7 @@
         </div>
     </div>
 
-    <div class="dialog_box box_overlay" style="width:1190px; z-index:9999999; left:365px; top:240px; display:none" id="close">
+    <div class="dialog_box box_overlay" style="width:1190px; z-index:9999999; left:20%; top:20%; display:none" id="close">
         <a href="#" class="dialog_close">
             <span class="dialog_span"></span>
         </a>
@@ -306,7 +304,7 @@
                     <p>亲，根据2015第e商城整体服务升级计划，即日起正式执行新进驻商家招商标准。以下是各行业今年意愿招商的品牌方向，请务必仔细查阅您申请入驻的品牌是否在以下范围。</p>
                 </div>
             </div>
-            <iframe src="brand1.html" frameborder="no" border="0" marginwidth="0" marginheight="0" width="1190" height="500">
+            <iframe src="<?php echo U('Brand/banner1');?>" frameborder="no" border="0" marginwidth="0" marginheight="0" width="1190" height="500">
             </iframe>
             <div class="dialog_btn">
                 <button class=" dialog_onlcik btn_bg btn_cont" style="border:none;">确定，继续入驻</button>

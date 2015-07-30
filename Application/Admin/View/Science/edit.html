@@ -1,0 +1,75 @@
+<extend name="Public/base" />
+
+<block name="body">
+    <form action="{:U('save')}" method="post" class="form-horizontal">
+        <div class="form-item">
+            <label class="item-label">所属类型</label>
+            <div class="controls">
+                <select name="parent" id="parent">
+                    <volist name="AttrParent" id="parent">
+                        <option value="{$parent.id}">{$parent.attr_name}</option>
+                    </volist>
+                </select>
+                <php>
+               if(!empty($AttrChild))
+                    {
+                </php>
+                    <select name="child" id="child">
+                        <volist name="AttrChild" id="child">
+                            <option value="{$child.attr_value}">{$child.attr_name}</option>
+                        </volist>
+                    </select>
+                <php>
+                    }
+                </php>
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">标题</label>
+            <div class="controls">
+                <input type="text" class="text input-large" required="required" name="sc_title" value="{$science_info[sc_title]}" >
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">內容</label>
+            <textarea name="sc_content">{$science_info[sc_content]}</textarea>
+            {:hook('adminArticleEdit')}
+        </div>
+        <div class="form-item">
+            <input type="hidden" name="HDaction" value="{$action}">
+            <input type="hidden" id="HDid" name="HDid" value="{$id}">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+    <!-- 标签页导航 -->
+
+    </div>
+</block>
+<block name="script">
+    <script type="text/javascript">
+        var val='{$parent_id}';
+        if(val==''||val==null)
+        {
+            val=6;
+        }
+        $("#parent").val(val);
+        $("#parent").change(function () {
+                var id=$("#HDid").val();
+                var value=$(this).val();
+                var url='{:U()}';
+                url=url.substring(0,url.length-5);
+                url=  url+"/id/"+id+"/value/"+value+".html";
+                location.href=url;
+
+        })
+
+        //导航高亮
+        highlight_subnav('{:U('index')}');
+
+
+
+
+    </script>
+</block>
+

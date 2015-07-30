@@ -19,9 +19,8 @@ ul{
 body{
 	color:#545454;
     background:#ffffff;
-	font:12px/1.5 tahoma,arial,"\5b8b\4f53";
-	/*font-family:"微软雅黑","microsoft yahei","宋体",Arial,tahoma,Simsun;*/
-/*	font-size:14px;*/
+	font-family:"微软雅黑","microsoft yahei","宋体",Arial,tahoma,Simsun;
+	font-size:12px;
 	font-style:normal;}
 .main_Content {
 	width:990px;

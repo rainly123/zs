@@ -229,7 +229,7 @@
     </script>
     
    <script type="text/javascript">
-       $("#brandtype").attr('value','<?php echo ($brandvalue); ?>');
+       $("#brandtype").val('<?php echo ($brandvalue); ?>');
        $("#brandtype").change(function(){
            var value=$(this).val();
            var url='<?php echo U();?>';
@@ -245,6 +245,7 @@
            location.href=url;
            return false;
        })
+
    </script>
 
 </body>

@@ -91,6 +91,7 @@
     <!-- 表单 -->
     <form id="form" action="<?php echo U('save');?>" method="post" class="form-horizontal">
         <input type="hidden" name="HDaction" value="<?php echo ($action); ?>">
+        <input type="hidden" name="HDAttr_value" value="<?php echo ($brand_type); ?>">
         <div class="form-item cf">
             <label class="item-label">名称</label>
             <div class="controls">
